@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="root" stylesheets="@style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.andre.dojo.javafx_contact_manager.DashboardController">
+   <children>
+      <VBox prefHeight="800.0" prefWidth="234.0">
+         <children>
+            <AnchorPane fx:id="side_angkerpane" prefHeight="800.0" prefWidth="259.0" styleClass="side-angkerpane" stylesheets="@style.css">
+               <children>
+                  <HBox fx:id="hboxTombolData" layoutX="18.0" layoutY="240.0" prefHeight="33.0" prefWidth="200.0" styleClass="side-button-active" stylesheets="@style.css">
+                     <children>
+                        <Button fx:id="tombolData" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="37.0" prefWidth="197.0" stylesheets="@style.css" text="  Data" textFill="WHITE">
+                           <font>
+                              <Font name="FreeSans" size="17.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/house.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="4.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="hboxTombolChange" layoutX="17.0" layoutY="293.0" prefHeight="33.0" prefWidth="200.0" styleClass="side-button" stylesheets="@style.css">
+                     <children>
+                        <Button fx:id="tombolChange" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="37.0" prefWidth="224.0" stylesheets="@style.css" text="  Change Data" textFill="WHITE">
+                           <font>
+                              <Font name="FreeSans" size="17.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/notebook-pen.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="4.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="hboxTombolHistory" layoutX="17.0" layoutY="346.0" prefHeight="33.0" prefWidth="200.0" styleClass="side-button" stylesheets="@style.css">
+                     <children>
+                        <Button fx:id="tombolExport" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="37.0" prefWidth="214.0" stylesheets="@style.css" text="  Export Import" textFill="WHITE">
+                           <font>
+                              <Font name="FreeSans" size="17.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/settings.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Circle layoutX="117.0" layoutY="98.0" radius="61.0" stroke="BLACK" strokeType="INSIDE">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.9605262875556946" blue="0.7844298481941223" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill></Circle>
+                  <Label fx:id="nameUser" alignment="CENTER" layoutY="174.0" prefHeight="25.0" prefWidth="234.0" styleClass="name-user" text="Nama Anda" textFill="WHITE" />
+                  <Separator layoutX="17.0" layoutY="220.0" prefWidth="200.0" />
+               </children></AnchorPane>
+         </children>
+      </VBox>
+      <AnchorPane fx:id="anchorPane" prefHeight="800.0" prefWidth="923.0">
+         <children>
+            <ScrollPane fx:id="scrollPaneFilter" layoutX="44.0" layoutY="227.0" prefHeight="75.0" prefWidth="869.0" stylesheets="@style.css">
+               <content>
+                  <HBox fx:id="hboxFilter" prefHeight="41.0" spacing="7.0" stylesheets="@style.css">
+                     <children>
+                        <VBox prefHeight="35.0" prefWidth="70.0">
+                           <children>
+                              <Button fx:id="btnFilterAll" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="35.0" prefWidth="67.0" styleClass="button-filter-active" stylesheets="@style.css" text="All">
+                                 <graphic>
+                                    <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@icons/badge-check.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="35.0" prefWidth="135.0">
+                           <children>
+                              <Button fx:id="btnFilterAll1" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="33.0" prefWidth="131.0" styleClass="button-filter" stylesheets="@style.css" text="Ascending">
+                                 <graphic>
+                                    <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@icons/a-arrow-down(1).png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="35.0" prefWidth="144.0">
+                           <children>
+                              <Button fx:id="btnFilterAll2" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="33.0" prefWidth="141.0" styleClass="button-filter" stylesheets="@style.css" text="Descending">
+                                 <graphic>
+                                    <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@icons/a-arrow-up(1).png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </HBox>
+               </content>
+            </ScrollPane>
+            <Label layoutX="45.0" layoutY="28.0" prefHeight="42.0" prefWidth="321.0" styleClass="h1" text="Account Manager App" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="45.0" layoutY="68.0" prefHeight="19.0" prefWidth="396.0" styleClass="normal" text="Let's protect the important things we have." textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Pane layoutX="43.0" layoutY="103.0" prefHeight="107.0" prefWidth="234.0" styleClass="jumlah-data">
+               <children>
+                  <Label fx:id="countAkun" layoutX="14.0" layoutY="33.0" prefHeight="42.0" prefWidth="183.0" styleClass="h1" text="200 Account" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="14.0" layoutY="69.0" prefHeight="19.0" prefWidth="183.0" styleClass="normal" text="Has been saved." textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="42.0" fitWidth="31.0" layoutX="188.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/between-horizontal-end(1).png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane layoutX="289.0" layoutY="103.0" prefHeight="107.0" prefWidth="200.0" styleClass="jumlah-jenis">
+               <children>
+                  <Label fx:id="countType" layoutX="14.0" layoutY="33.0" prefHeight="42.0" prefWidth="162.0" styleClass="h1" text="8 types" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="14.0" layoutY="68.0" prefHeight="19.0" prefWidth="122.0" styleClass="normal" text="of account." textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="42.0" fitWidth="31.0" layoutX="157.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/blocks.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <TableView fx:id="tableView" layoutX="43.0" layoutY="282.0" prefHeight="467.0" prefWidth="871.0" stylesheets="@style.css">
+              <columns>
+                  <TableColumn fx:id="accountIdColumn" prefWidth="100.0" text="  Account Id" />
+                  <TableColumn fx:id="accountURLColumn" prefWidth="180.0" text="  URL" />
+                  <TableColumn fx:id="accountUsernameColumn" prefWidth="204.0" text="  Username" />
+                  <TableColumn fx:id="accountPasswordColumn" prefWidth="162.0" text="  Password" />
+                <TableColumn fx:id="accountNameColumn" prefWidth="183.0" text="  Account type" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </children>
+</HBox>
