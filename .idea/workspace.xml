@@ -4,36 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="27303315-c998-4d2c-bd56-3d30ff2875ae" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/andre/dojo/Models/Account.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/andre/dojo/Models/AnimatedHoverButton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/andre/dojo/Models/HistoryPassword.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/andre/dojo/Utils/ObjectSaver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/andre/dojo/javafx_contact_manager/ChangeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/andre/dojo/javafx_contact_manager/DashboardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/andre/dojo/javafx_contact_manager/ExportController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/andre/dojo/javafx_contact_manager/HelloApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/andre/dojo/javafx_contact_manager/HelloController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/andre/dojo/javafx_contact_manager/SignupController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/andre/dojo/javafx_contact_manager/change-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/andre/dojo/javafx_contact_manager/dashboard-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/andre/dojo/javafx_contact_manager/export-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/andre/dojo/javafx_contact_manager/fonts/arial.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/andre/dojo/javafx_contact_manager/hello-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/andre/dojo/javafx_contact_manager/signup-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/andre/dojo/javafx_contact_manager/style.css" afterDir="false" />
-    </list>
+    <list default="true" id="27303315-c998-4d2c-bd56-3d30ff2875ae" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
