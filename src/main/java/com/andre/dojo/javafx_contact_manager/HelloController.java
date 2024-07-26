@@ -22,7 +22,7 @@ public class HelloController implements Initializable {
     @FXML
     private TextField username;
     @FXML
-    private TextField password;
+    private PasswordField password;
     @FXML
     private Button btnLogin;
     @FXML
@@ -88,12 +88,12 @@ public class HelloController implements Initializable {
             }
         });
 
-        for(Account ac : HelloApplication.getListData()){
-            if (ac.getId().get() > HelloApplication.max_id ){
-                HelloApplication.max_id = ac.getId().get();
-            }
-        }
+
 //        System.out.println("Jumlah id max = "+HelloApplication.max_id);
+    }
+
+    public void setPesan(String pesan) {
+        this.pesan.setText(pesan);
     }
 
     private void signupAction() {
@@ -111,24 +111,30 @@ public class HelloController implements Initializable {
         }
     }
 
-
     private void loginAction() {
         String uname = username.getText();
         String pass = password.getText();
         boolean ketemu = false;
 
-        int i = 1;
-        for(Account data : HelloApplication.getListData()){
-            System.out.println(i);
-            if (data.getUsername().get().equals(uname) ){
-                System.out.println("oi "+1);
-                if (data.getPassword().get().equals(pass)){
-                    HelloApplication.setUserNow(data);
-                    ketemu = true;
-                    break;
+//        int i = 1;
+        if (HelloApplication.getListData().isEmpty()){
+            showAlert("Belum ada akun yang terdaftar");
+            return;
+        }else{
+            for(Account data : HelloApplication.getListData()){
+//            System.out.println(i);
+                if (data.getOwner() == null){
+                    if (data.getUsername().get().equals(uname) ){
+                        System.out.println("oi "+1);
+                        if (data.getPassword().get().equals(pass)){
+                            HelloApplication.setUserNow(data);
+                            ketemu = true;
+                            break;
+                        }
+                    }
                 }
+//            i++;
             }
-            i++;
         }
 
         if (ketemu){
@@ -149,12 +155,7 @@ public class HelloController implements Initializable {
                 e1.printStackTrace();
             }
         }else{
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Info");
-            alert.setHeaderText(null);
-            alert.setContentText("Username atau password yang anda masukan tidak sesuai");
-            alert.showAndWait();
-
+            showAlert("Maaf password atau username tidak cocok");
 //            Dialog<ButtonType> dialog = new Dialog<>();
 //            dialog.setTitle("Custom Dialog");
 //            dialog.setHeaderText("Ini adalah header dialog");
@@ -165,6 +166,14 @@ public class HelloController implements Initializable {
 //
 //            dialog.showAndWait();
         }
+    }
+
+    public static void showAlert(String pesan) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Info");
+        alert.setHeaderText(null);
+        alert.setContentText(pesan);
+        alert.showAndWait();
     }
 
 

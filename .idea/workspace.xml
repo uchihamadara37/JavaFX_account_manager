@@ -4,7 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="27303315-c998-4d2c-bd56-3d30ff2875ae" name="Changes" comment="" />
+    <list default="true" id="27303315-c998-4d2c-bd56-3d30ff2875ae" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/andre/dojo/Models/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/andre/dojo/Models/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/andre/dojo/Models/HistoryPassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/andre/dojo/Models/HistoryPassword.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/andre/dojo/Utils/ObjectSaver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/andre/dojo/Utils/ObjectSaver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/andre/dojo/javafx_contact_manager/ChangeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/andre/dojo/javafx_contact_manager/ChangeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/andre/dojo/javafx_contact_manager/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/andre/dojo/javafx_contact_manager/DashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/andre/dojo/javafx_contact_manager/ExportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/andre/dojo/javafx_contact_manager/ExportController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/andre/dojo/javafx_contact_manager/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/andre/dojo/javafx_contact_manager/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/andre/dojo/javafx_contact_manager/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/andre/dojo/javafx_contact_manager/HelloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/andre/dojo/javafx_contact_manager/SignupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/andre/dojo/javafx_contact_manager/SignupController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/andre/dojo/javafx_contact_manager/change-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/andre/dojo/javafx_contact_manager/change-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/andre/dojo/javafx_contact_manager/dashboard-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/andre/dojo/javafx_contact_manager/dashboard-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/andre/dojo/javafx_contact_manager/export-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/andre/dojo/javafx_contact_manager/export-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/andre/dojo/javafx_contact_manager/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/andre/dojo/javafx_contact_manager/hello-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/andre/dojo/javafx_contact_manager/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/andre/dojo/javafx_contact_manager/style.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

@@ -8,8 +8,6 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -17,11 +15,14 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="923.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.andre.dojo.javafx_contact_manager.ChangeController">
    <children>
-      <TextField fx:id="searchField" layoutX="600.0" layoutY="20.0" prefHeight="36.0" prefWidth="258.0" promptText="Search...">
+      <TextField fx:id="searchField" layoutX="286.0" layoutY="19.0" prefHeight="36.0" prefWidth="351.0" promptText="Search...">
          <styleClass>
             <String fx:value="search-field" />
             <String fx:value="text-input" />
-         </styleClass></TextField>
+         </styleClass>
+         <padding>
+            <Insets left="15.0" right="15.0" />
+         </padding></TextField>
       <TableView fx:id="tableView" layoutX="15.0" layoutY="73.0" prefHeight="378.0" prefWidth="576.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="73.0">
         <columns>
           <TableColumn fx:id="accountNameColumn" prefWidth="191.0" text="  Account Name" />
@@ -32,7 +33,7 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <HBox layoutX="30.0" layoutY="466.0" prefHeight="204.0" prefWidth="431.0">
+      <HBox layoutX="247.0" layoutY="505.0" prefHeight="204.0" prefWidth="431.0">
          <children>
             <VBox prefHeight="139.0" prefWidth="174.0">
                <children>
@@ -73,7 +74,6 @@
                         <Insets bottom="3.0" top="3.0" />
                      </VBox.margin>
                   </PasswordField>
-                  <Label fx:id="pesan" prefHeight="20.0" prefWidth="256.0" text="  Password" textFill="WHITE" />
                </children>
             </VBox>
          </children>
@@ -87,17 +87,9 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button fx:id="btnUpdate" layoutX="345.0" layoutY="673.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="117.0" styleClass="button-update" text="Add Data" textFill="WHITE" />
-      <Button fx:id="btnDelete" layoutX="511.0" layoutY="673.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="139.0" styleClass="button-delete" text="Delete Data" textFill="WHITE" />
-      <Button fx:id="btnCancel" layoutX="201.0" layoutY="673.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="102.0" styleClass="button-delete" text="Cancel" textFill="WHITE" />
-      <Button fx:id="btnUpdate1" layoutX="826.0" layoutY="17.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="47.0" styleClass="button-update" textFill="WHITE">
-         <graphic>
-            <ImageView fitHeight="33.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@icons/search.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
+      <Button fx:id="btnUpdate" layoutX="392.0" layoutY="718.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="117.0" styleClass="button-update" text="Add Data" textFill="WHITE" />
+      <Button fx:id="btnDelete" layoutX="539.0" layoutY="718.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="139.0" styleClass="button-delete" text="Delete Data" textFill="WHITE" />
+      <Button fx:id="btnCancel" layoutX="247.0" layoutY="718.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="102.0" styleClass="button-delete" text="Cancel" textFill="WHITE" />
+      <Label fx:id="pesan" alignment="CENTER" layoutX="71.0" layoutY="474.0" prefHeight="20.0" prefWidth="783.0" text="  Password" textFill="WHITE" />
    </children>
 </AnchorPane>

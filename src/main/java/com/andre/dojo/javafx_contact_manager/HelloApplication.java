@@ -41,27 +41,7 @@ public class HelloApplication extends Application {
             System.out.println("Belum ada file tersimpan");
         }
 
-
-//        listData.add(new Account(1, "Facebook", "facebook.com", "123", "123ps"));
-//        listData.add(new Account(2, "Facebook", "facebook.com", "123", "123ps"));
-//        listData.add(new Account(3, "Facebook", "facebook.com", "123", "123"));
-//        listData.add(new Account(4, "Facebook", "facebook.com", "123", "123ps"));
-//        listData.add(new Account(5, "Facebook", "facebook.com", "123", "123ps"));
-//
-//        listData.add(new Account(6, "Instagram", "facebook.com", "123", "123ps"));
-//        listData.add(new Account(7, "Instagram", "facebook.com", "123", "123ps"));
-//        listData.add(new Account(8, "Youtube", "facebook.com", "123", "123"));
-//        listData.add(new Account(9, "Line", "facebook.com", "123", "123ps"));
-//        listData.add(new Account(10, "MyAList", "facebook.com", "123", "123ps"));
-//
-//        listData.add(new Account(11, "Google", "facebook.com", "123", "123ps"));
-//        listData.add(new Account(12, "Facebook", "facebook.com", "123", "123ps"));
-//        listData.add(new Account(13, "Facebook", "facebook.com", "123", "123"));
-//        listData.add(new Account(14, "Facebook", "facebook.com", "123", "123ps"));
-//        listData.add(new Account(15, "Facebook", "facebook.com", "123", "123ps"));
-
         initPrimaryStage();
-
     }
 
     private void initPrimaryStage(){
@@ -70,13 +50,11 @@ public class HelloApplication extends Application {
             Scene scene = new Scene(fxmlLoader.load());
 
             scene.getRoot().setStyle(
-
                             "-fx-background-radius: 0 0 20 20;" + // Radius untuk corner bawah
                             "-fx-border-radius: 0 0 20 20;" +     // Radius untuk border
                             "-fx-border-color: black;" +
                             "-fx-border-width: 0px;"
             );
-
 //            stageOri.initStyle(StageStyle.TRANSPARENT);
             stageOri.setTitle("Hello!");
             stageOri.setScene(scene);

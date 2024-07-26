@@ -12,15 +12,18 @@ import java.io.Serializable;
 import java.util.LinkedList;
 
 public class Account implements Serializable {
-    private final IntegerProperty id;
+
+    private final Account owner;
+    private final StringProperty id;
     private final StringProperty accountName;
     private StringProperty url;
     private final StringProperty username;
     private StringProperty password;
     private ObservableList<HistoryPassword> historyPassword = FXCollections.observableArrayList();
 
-    public Account(int id, String accountName, String url, String username, String password){
-        this.id = new SimpleIntegerProperty(id);
+    public Account(Account owner, String id, String accountName, String url, String username, String password){
+        this.owner = owner;
+        this.id = new SimpleStringProperty(id);
         this.accountName = new SimpleStringProperty(accountName);
         this.url = new SimpleStringProperty(url);
         this.username = new SimpleStringProperty(username);
@@ -29,19 +32,43 @@ public class Account implements Serializable {
 
     @Override
     public String toString(){
-        return id.get()+"<>"+accountName.get()+"<>"+url.get()+"<>"+username.get()+"<>"+password.get();
+        if (owner == null){
+            return id.get()+"<>"+accountName.get()+"<>"+url.get()+"<>"+username.get()+"<>"+password.get();
+        }else{
+            return owner.id.get()+"<>"+owner.accountName.get()+"<>"+owner.url.get()+"<>"+owner.username.get()+"<>"+owner.password.get()+"<>"+
+                    id.get()+"<>"+accountName.get()+"<>"+url.get()+"<>"+username.get()+"<>"+password.get();
+        }
     }
     public String getString(){
         return toString();
     }
     public static Account fromString(String akunString){
         String[] parts = akunString.split("<>");
-        int id = Integer.parseInt(parts[0]);
-        String jenisAkun = parts[1];
-        String url = parts[2];
-        String username = parts[3];
-        String password = parts[4];
-        return new Account(id, jenisAkun, url, username, password);
+        if (parts.length == 10 ){
+            String id = parts[0];
+            String jenisAkun = parts[1];
+            String url = parts[2];
+            String username = parts[3];
+            String password = parts[4];
+            String id2 = parts[5];
+            String jenisAkun2 = parts[6];
+            String url2 = parts[7];
+            String username2 = parts[8];
+            String password2 = parts[9];
+            return new Account(new Account(null, id, jenisAkun, url, username, password),
+                    id2, jenisAkun2, url2, username2, password2);
+        }else{
+            String id = parts[0];
+            String jenisAkun = parts[1];
+            String url = parts[2];
+            String username = parts[3];
+            String password = parts[4];
+            return new Account(null, id, jenisAkun, url, username, password);
+        }
+    }
+
+    public Account getOwner() {
+        return owner;
     }
 
     public void addHistoryPassword(HistoryPassword history){
@@ -82,7 +109,7 @@ public class Account implements Serializable {
         this.password.set(password);
     }
 
-    public IntegerProperty getId() {
+    public StringProperty getId() {
         return id;
     }
 

@@ -62,7 +62,7 @@ public class ChangeController implements Initializable {
     @FXML
     private Label pesan;
 
-    private int idSelected = 0;
+    private String idSelected;
     ObservableList<HistoryPassword> historyKosong = FXCollections.observableArrayList();
 
     @Override
@@ -71,6 +71,7 @@ public class ChangeController implements Initializable {
         btnDelete.setVisible(false);
         btnUpdate.setVisible(true);
         btnCancel.setVisible(false);
+        tableView2.setVisible(false);
 
         reloadContentOfTable(HelloApplication.getListData());
         reloadContentOfTableHistory(historyKosong);
@@ -98,7 +99,13 @@ public class ChangeController implements Initializable {
         });
 
         btnDelete.setOnAction(e -> {
-            HelloApplication.getListData().removeIf(ac -> idSelected == ac.getId().get());
+            HelloApplication.getListData().removeIf(ac -> ac.getOwner() != null && idSelected == ac.getId().get());
+            if (HelloApplication.getListData().stream()
+                    .filter(ac -> ac.getOwner() == null)
+                    .findFirst()
+                    .orElse(null) != null){
+                HelloController.showAlert("Maaf anda tidak bisa menghapus data user App");
+            }
         });
 
 
@@ -137,7 +144,7 @@ public class ChangeController implements Initializable {
         String acUsername = username.getText();
         String acPass = password.getText();
         for (Account ac : HelloApplication.getListData()){
-            if (ac.getId().get() == idSelected){
+            if (Objects.equals(ac.getId().get(), idSelected)){
                 ac.addHistoryPassword(new HistoryPassword(
                         ac.getId().get(),
                         getTimeNow(),
@@ -146,6 +153,7 @@ public class ChangeController implements Initializable {
 
                 ac.setUrl(acURL);
                 ac.setPassword(acPass);
+                HelloController.showAlert("Data berhasil diupdate!");
                 pesan.setText("data berhasil diupdate!");
 //                reloadContentOfTable();
                 showPersonDetails(null);
@@ -173,9 +181,11 @@ public class ChangeController implements Initializable {
         String acUsername = username.getText();
         String acPass = password.getText();
         pesan.setText("berhasil menginput data!");
-        HelloApplication.addListData(new Account(++HelloApplication.max_id, acName, acURL, acUsername, acPass));
+        HelloApplication.addListData(new Account(HelloApplication.getUserNow(), SignupController.generateId(), acName, acURL, acUsername, acPass));
         reloadContentOfTable(HelloApplication.getListData());
         showPersonDetails(null);
+        tableView2.setVisible(false);
+        HelloController.showAlert("Berhasil menginput data!");
     }
 
     private boolean checkFieldIsAppropriate() {
@@ -210,13 +220,19 @@ public class ChangeController implements Initializable {
             // Fill the labels with info from the person object.
             accountName.setText(person.getAccountName().get());
             acUrl.setText(person.getUrl().get());
-            username.setText(person.getUrl().get());
+            username.setText(person.getUsername().get());
             password.setText(person.getPassword().get());
             idSelected = person.getId().get();
 
             setStateChange();
             repeatPassword.setText("");
-            reloadContentOfTableHistory(person.getHistoryPassword());
+            if(person.getHistoryPassword().isEmpty()){
+                reloadContentOfTableHistory(person.getHistoryPassword());
+                tableView2.setVisible(false);
+            }else{
+                reloadContentOfTableHistory(person.getHistoryPassword());
+                tableView2.setVisible(true);
+            }
 //            tableView.getSelectionModel().clearSelection();
 
         } else {
@@ -226,7 +242,7 @@ public class ChangeController implements Initializable {
             username.setText("");
             password.setText("");
             repeatPassword.setText("");
-            idSelected = 0;
+            idSelected = "";
 
             reloadContentOfTableHistory(historyKosong);
         }

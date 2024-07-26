@@ -81,9 +81,7 @@ public class ObjectSaver implements Serializable{
                     }
                     accounts.add(akun);
                     // mencari id max
-                    if (akun.getId().get() > id_max){
-                        id_max = akun.getId().get();
-                    }
+
                 }
             }
 

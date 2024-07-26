@@ -15,6 +15,7 @@ import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ExportController implements Initializable {
@@ -24,7 +25,7 @@ public class ExportController implements Initializable {
     @FXML
     private Button btnImportFile;
     @FXML
-    private TextField address;
+    private Label address;
 
     @FXML
     private TableView<Account> tableView;
@@ -41,6 +42,7 @@ public class ExportController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        System.out.println("init export");
         loadContentTable();
 
         address.setText(ObjectSaver.filenameAddress);
@@ -74,6 +76,7 @@ public class ExportController implements Initializable {
                 ObjectSaver.saveFileCache(file.getAbsolutePath());
                 System.out.println("berhasil menyimpan data");
 
+                HelloController.showAlert("Berhasil menyimpan data.");
                 address.setText(ObjectSaver.filenameAddress);
             }
         });
@@ -82,13 +85,32 @@ public class ExportController implements Initializable {
             File file = ObjectSaver.chooseFileSelectOpen();
             if (file != null) {
                 System.out.println(file.getAbsoluteFile());
+                String fileNameBefore = ObjectSaver.filenameAddress;
+
                 ObjectSaver.filenameAddress = file.getAbsolutePath();
                 if (ObjectSaver.retrieveAccount().getKey() != null){
-                    HelloApplication.setListData(ObjectSaver.retrieveAccount().getKey());
-                    System.out.println("berhasil mengimport data");
-                    loadContentTable();
-                    ObjectSaver.saveFileCache(file.getAbsolutePath());
-                    address.setText(ObjectSaver.filenameAddress);
+                    for (Account ac : ObjectSaver.retrieveAccount().getKey()){
+
+                        if (ac.getOwner() == null){
+                            if (Objects.equals(ac.getId().get(), HelloApplication.getUserNow().getId().get())){
+                                // data cocok
+                                HelloApplication.setListData(ObjectSaver.retrieveAccount().getKey());
+                                System.out.println("berhasil mengimport data");
+                                HelloController.showAlert("Berhasil mengimport data");
+
+                                loadContentTable();
+                                ObjectSaver.saveFileCache(file.getAbsolutePath());
+                                address.setText(ObjectSaver.filenameAddress);
+                            }else{
+//                                itu bukan data anda
+                                HelloController.showAlert("Tidak bisa mengimport file tersebut. Data tersebut bukan milik anda");
+                                ObjectSaver.filenameAddress = fileNameBefore;
+                            }
+
+                            break;
+                        }
+                    }
+
                 }else{
                     System.out.println("isi file masih kosong");
                 }
@@ -97,11 +119,9 @@ public class ExportController implements Initializable {
         });
     }
 
-
-
     private void loadContentTable() {
         tableView.setItems(HelloApplication.getListData());
-        accountIdColumn.setCellValueFactory(data -> data.getValue().getId().asString());
+        accountIdColumn.setCellValueFactory(data -> data.getValue().getId());
         accountNameColumn.setCellValueFactory(cellData -> cellData.getValue().getAccountName());
         accountURLColumn.setCellValueFactory(cellData -> cellData.getValue().getUrl());
         accountUsernameColumn.setCellValueFactory(cellData -> cellData.getValue().getUsername());

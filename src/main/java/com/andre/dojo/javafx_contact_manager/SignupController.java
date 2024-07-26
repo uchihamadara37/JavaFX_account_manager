@@ -12,6 +12,9 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 import java.net.URL;
+import java.security.Timestamp;
+import java.time.Instant;
+import java.util.Base64;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -64,12 +67,36 @@ public class SignupController implements Initializable {
                     if (passMengandungSpace){
                         pesan.setText("password tidak boleh mengandung spasi");
                     }else{
-                        // sudah sesuai. tinggal membuat id
-                        HelloApplication.max_id++;
-                        HelloApplication.addListData(new Account(HelloApplication.max_id, acName, acUrl2, uname, pass));
-                        clearField();
+                        // mengecek apakah sebelumnya ada data null(master)
+//                        if (!hasOwnerData()){
+
+                            System.out.println("tidak memiliki owner");
+                            ObjectSaver.saveFileCache("");
+                            ObjectSaver.filenameAddress = "";
+                            boolean labelUpdated = HelloController.anchorPaneStatic.getChildren().stream()
+                                    .filter(node -> "pesan".equals(node.getId()))
+                                    .findFirst()
+                                    .map(node -> {
+                                        if (node instanceof Label) {
+                                            ((Label) node).setText("");
+                                            return true;
+                                        }
+                                        return false;
+                                    })
+                                    .orElse(false);
+                            HelloApplication.getListData().clear();
+                            HelloApplication.addListData(new Account(null, generateId(), acName, acUrl2, uname, pass));
+                            HelloApplication.max_id = 1;
+//                        }else{
+//                            System.out.println("punya owner");
+//                            // sudah sesuai. tinggal membuat id
+//                            HelloApplication.max_id++;
+//                            HelloApplication.addListData(new Account(null, HelloApplication.max_id, acName, acUrl2, uname, pass));
+//                            clearField();
+//                        }
 //                        ObjectSaver.SaveAccount(HelloApplication.getListData());
                         pesan.setText("berhasil menambahkan akun!");
+
                         HelloController.anchorPaneRootStatic.getChildren().removeFirst();
                         HelloController.anchorPaneRootStatic.getChildren().add(HelloController.anchorPaneStatic);
                         HelloApplication.getStage().setTitle("Dashboard!");
@@ -81,6 +108,20 @@ public class SignupController implements Initializable {
                 pesan.setText("Pastikan semua kolom di atas terisi!");
             }
         });
+    }
+
+    public static String generateId() {
+        long timeBasedId = Instant.now().toEpochMilli();
+        return Base64.getEncoder().encodeToString(String.valueOf(timeBasedId).getBytes());
+    }
+
+    private boolean hasOwnerData() {
+        for (Account ac : HelloApplication.getListData()){
+            if (ac.getOwner() == null){
+                return true;
+            }
+        }
+        return false;
     }
 
     private void clearField() {

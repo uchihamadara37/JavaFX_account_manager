@@ -80,18 +80,25 @@ public class DashboardController implements Initializable {
     @FXML
     private ScrollPane scrollPaneFilter;
 
-    List<String> jenis = new ArrayList<>();
+
     String stateFilter = "All";
     List<VBox> vboxes = new ArrayList<>();
 
     static ObservableList<Account> listView = FXCollections.observableArrayList();
 
+    URL urlDashboard;
+    ResourceBundle resourceBundleDashboard;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        urlDashboard = url;
+        resourceBundleDashboard = resourceBundle;
+
+        System.out.println("init dashboard");
+
         countAkun.setText(Integer.toString(HelloApplication.getListData().size()) + " Account");
 
-        listView.addAll(HelloApplication.getListData());
-
+        List<String> jenis = new ArrayList<>();
         for (Account data : HelloApplication.getListData()){
             boolean sudahAda = false;
             for (String e : jenis){
@@ -110,9 +117,15 @@ public class DashboardController implements Initializable {
 
         // mengetes
         int jumlahJenis = 0;
+        // hapus dulu vbox jika reload
+        if (hboxFilter.getChildren().size() > 3 ){
+//            System.out.println("terhapus oi size:"+hboxFilter.getChildren().size());
+            hboxFilter.getChildren().subList(3, hboxFilter.getChildren().size() -1).clear();
+        }
+        // membuat vbox ulang
         for (String e : jenis){
             jumlahJenis++;
-
+//            System.out.println("jenis : "+e);
             // Membuat VBox
             VBox vbox = new VBox();
             vbox.setPrefHeight(35.0);
@@ -139,6 +152,7 @@ public class DashboardController implements Initializable {
 //            iconView.setPreserveRatio(true);
 
             vbox.getChildren().add(btnFilterAll2);
+
             hboxFilter.getChildren().add(vbox);
 //            System.out.println(e);
         }
@@ -156,12 +170,10 @@ public class DashboardController implements Initializable {
                 .toList();
 
 
-        tableView.setItems(listView);
-        accountIdColumn.setCellValueFactory(data -> data.getValue().getId().asString());
-        accountNameColumn.setCellValueFactory(cellData -> cellData.getValue().getAccountName());
-        accountURLColumn.setCellValueFactory(cellData -> cellData.getValue().getUrl());
-        accountUsernameColumn.setCellValueFactory(cellData -> cellData.getValue().getUsername());
-        accountPasswordColumn.setCellValueFactory(cellData -> cellData.getValue().getPassword());
+        listView.clear();
+        listView.addAll(HelloApplication.getListData());
+
+        loadTable(listView);
 
         tombolChange.setOnAction(e -> {
             try{
@@ -214,6 +226,7 @@ public class DashboardController implements Initializable {
             hboxTombolChange.getStyleClass().add("side-button");
             hboxTombolHistory.getStyleClass().removeFirst();
             hboxTombolHistory.getStyleClass().add("side-button");
+            initialize(urlDashboard, resourceBundleDashboard);
         });
 
         scrollPaneFilter.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Sembunyikan scrollbar horizontal
@@ -250,7 +263,7 @@ public class DashboardController implements Initializable {
         }else if(Objects.equals(stateFilter, "Descending")){
             listView.sort(Collections.reverseOrder(Comparator.comparing(o -> o.getAccountName().get())));
         }else if(Objects.equals(stateFilter, "All")){
-            listView.sort(Comparator.comparingInt(o -> o.getId().get()));
+            listView.sort(Comparator.comparing(o -> o.getId().get()));
         }else{
             listView.clear();
             for(Account account : HelloApplication.getListData()){
@@ -265,12 +278,8 @@ public class DashboardController implements Initializable {
 
 
         // mereset ulang table
-        tableView.setItems(listView);
-        accountIdColumn.setCellValueFactory(data -> data.getValue().getId().asString());
-        accountNameColumn.setCellValueFactory(cellData -> cellData.getValue().getAccountName());
-        accountURLColumn.setCellValueFactory(cellData -> cellData.getValue().getUrl());
-        accountUsernameColumn.setCellValueFactory(cellData -> cellData.getValue().getUsername());
-        accountPasswordColumn.setCellValueFactory(cellData -> cellData.getValue().getPassword());
+        loadTable(listView);
+
 
         for (VBox vbox : vboxes){
 
@@ -284,6 +293,15 @@ public class DashboardController implements Initializable {
             }
         }
 
+    }
+
+    private void loadTable(ObservableList<Account> listView) {
+        tableView.setItems(listView);
+        accountIdColumn.setCellValueFactory(data -> data.getValue().getId());
+        accountNameColumn.setCellValueFactory(cellData -> cellData.getValue().getAccountName());
+        accountURLColumn.setCellValueFactory(cellData -> cellData.getValue().getUrl());
+        accountUsernameColumn.setCellValueFactory(cellData -> cellData.getValue().getUsername());
+        accountPasswordColumn.setCellValueFactory(cellData -> cellData.getValue().getPassword());
     }
 
     public void toggleUnderline(VBox vboxHover){

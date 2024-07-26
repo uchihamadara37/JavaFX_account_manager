@@ -206,12 +206,15 @@
             </Pane>
             <TableView fx:id="tableView" layoutX="43.0" layoutY="282.0" prefHeight="467.0" prefWidth="871.0" stylesheets="@style.css">
               <columns>
-                  <TableColumn fx:id="accountIdColumn" prefWidth="100.0" text="  Account Id" />
-                  <TableColumn fx:id="accountURLColumn" prefWidth="180.0" text="  URL" />
-                  <TableColumn fx:id="accountUsernameColumn" prefWidth="204.0" text="  Username" />
-                  <TableColumn fx:id="accountPasswordColumn" prefWidth="162.0" text="  Password" />
-                <TableColumn fx:id="accountNameColumn" prefWidth="183.0" text="  Account type" />
+                  <TableColumn fx:id="accountIdColumn" prefWidth="139.0" text="  ID" />
+                <TableColumn fx:id="accountNameColumn" prefWidth="169.0" text="  Account type" />
+                  <TableColumn fx:id="accountURLColumn" prefWidth="164.0" text="  URL" />
+                  <TableColumn fx:id="accountUsernameColumn" prefWidth="195.0" text="  Username" />
+                  <TableColumn fx:id="accountPasswordColumn" prefWidth="202.0" text="  Password" />
               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
             </TableView>
          </children>
       </AnchorPane>
