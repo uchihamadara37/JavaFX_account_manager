@@ -109,7 +109,7 @@
 }
 
 .jumlah-jenis{
-    -fx-background-color: linear-gradient(to bottom right, #f549ff, #d8056aec);
+    -fx-background-color: linear-gradient(to bottom right, #f549ff, #fa855cec);
     -fx-border-radius: 10px;
     -fx-border-width: 0px 0px;
     -fx-border-color: linear-gradient(to bottom right, #fbfbfb83, #92c8c33d);
@@ -257,13 +257,9 @@
 .button-delete{
     -fx-background-color : linear-gradient(to bottom right, #fb02e5, #cc006d);
     -fx-background-radius : 20px;
-/*    -fx-font-weight : 700px;*/
-/*    -fx-text-fill : #292828;*/
     -fx-border-width: 1px;
     -fx-border-color: #ffff;
     -fx-border-radius: 20px;
-/*    -fx-font-weight: 670;*/
-/*    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.39), 2, 10, 5, 0);*/
 }
 .button-update{
     -fx-background-color : linear-gradient(to bottom right, #2cb6e8, #fb3de2ec);
@@ -272,6 +268,28 @@
     -fx-border-width: 1px;
     -fx-border-color:  #ffff;
     -fx-border-radius: 20px;
+}
+.button-update:hover {
+    -fx-background-color : linear-gradient(to bottom right, #9c4406, #f64b17ec);
+    -fx-background-radius : 20px;
+    -fx-text-fill : #ffffff;
+    -fx-border-width: 1px;
+    -fx-border-color:  #ffff;
+    -fx-border-radius: 20px;
+}
+.button-delete:hover {
+    -fx-background-color : linear-gradient(to bottom right, #9c4406, #f64b17ec);
+    -fx-background-radius : 20px;
+    -fx-text-fill : #ffffff;
+    -fx-border-width: 1px;
+    -fx-border-color:  #ffff;
+    -fx-border-radius: 20px;
+}
+.button-delete:focused {
+    -fx-background-color : linear-gradient(to bottom right,  #29ecd4, #04a2bdec);
+}
+.button-update:focused {
+    -fx-background-color : linear-gradient(to bottom right,  #29ecd4, #04a2bdec);
 }
 
 .search-field{
@@ -316,6 +334,15 @@
     -fx-border-radius: 20px;
     -fx-text-fill : #ffffff;
 }
+.btn-login:focused {
+    -fx-background-color : linear-gradient(to bottom right, #29ecd4, #04a2bdec);
+/*    -fx-background-radius : 20px;*/
+/*    -fx-text-fill : #ffffff;*/
+/*    -fx-border-width: 1px;*/
+/*    -fx-border-color:  #ffff;*/
+/*    -fx-border-radius: 20px;*/
+}
+
 .btn-signup{
 /*    -fx-background-color : linear-gradient(to bottom right, #e691ef,#c62bd6);*/
         -fx-background-color : #63636364;

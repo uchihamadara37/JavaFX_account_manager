@@ -81,18 +81,49 @@ public class HelloApplication extends Application {
 
             }else{
                 dx.append(c.charAt((j+geser) % c.length()));
+
             }
         }
         c2 = dx.toString();
-        StringBuilder d2x = new StringBuilder();
+//        System.out.println("ayam geser : "+c2);
 
+        StringBuilder d2x = new StringBuilder();
         for (int j = 0; j < pass.length(); j++) {
-            int o = ((pass.charAt(j) + c2.charAt(j)) % 26) + 65;
+//            int o = ((pass.charAt(j) + c2.charAt(j)) % 26) + 65;
+            int o = ((pass.charAt(j) + c2.charAt(j))) + 65;
 
             d2x.append((char) o);
-//            System.out.println(d2x.toString());
         }
+//        System.out.println("hasil vigenere : "+d2x.toString());
         return d2x.toString();
+    }
+
+    public static String decodeVigenere(String encodedText) {
+//        StringBuilder decodedText = new StringBuilder();
+        String baseKey = "ayam";
+        int shift = 3;
+
+        // Membuat kunci yang digeser
+        StringBuilder shiftedKey = new StringBuilder();
+        for (int i = 0; i < encodedText.length(); i++) {
+            char c = baseKey.charAt((i + shift) % baseKey.length());
+            shiftedKey.append(c);
+        }
+        String key = shiftedKey.toString();
+//        System.out.println("decoded kunci : "+ key);
+
+        StringBuilder hasil = new StringBuilder();
+        for (int i = 0; i < encodedText.length(); i++) {
+//            char encodedChar = encodedText.charAt(i);
+//            char keyChar = key.charAt(i % key.length());
+
+            // Mengasumsikan input adalah huruf kapital
+//            int decodedChar = ((encodedChar - keyChar + 26) % 26) + 'A';
+            int ok = ((encodedText.charAt(i) - key.charAt(i))) - 65;
+            hasil.append((char) ok);
+        }
+
+        return hasil.toString();
     }
 
     public static String getSHA256Hash(String data) {

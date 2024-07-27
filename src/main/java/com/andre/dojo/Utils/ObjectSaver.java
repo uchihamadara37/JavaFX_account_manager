@@ -48,7 +48,10 @@ public class ObjectSaver implements Serializable{
             }
             // akun#histo,history@akun#histo,histo
             String enkripsi = Base64.getEncoder().encodeToString(str.toString().getBytes());
-            writer.write(enkripsi);
+            String encodedS = HelloApplication.makeVigenereString(enkripsi);
+
+
+            writer.write(encodedS);
             writer.newLine();
         }catch (IOException e){
             throw new RuntimeException(e);
@@ -65,7 +68,7 @@ public class ObjectSaver implements Serializable{
                 // akun#histo,history@akun#histo,histo
                 accounts = FXCollections.observableArrayList();
 
-                String encodeEnkripsi = new String(Base64.getDecoder().decode(line));
+                String encodeEnkripsi = new String(Base64.getDecoder().decode(HelloApplication.decodeVigenere(line)));
 
                 String[] akuns = encodeEnkripsi.split("@");
 

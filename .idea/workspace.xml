@@ -6,6 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="27303315-c998-4d2c-bd56-3d30ff2875ae" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/andre/dojo/Models/HistoryPassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/andre/dojo/Models/HistoryPassword.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/andre/dojo/Utils/ObjectSaver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/andre/dojo/Utils/ObjectSaver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/andre/dojo/javafx_contact_manager/ChangeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/andre/dojo/javafx_contact_manager/ChangeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/andre/dojo/javafx_contact_manager/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/andre/dojo/javafx_contact_manager/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/andre/dojo/javafx_contact_manager/SignupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/andre/dojo/javafx_contact_manager/SignupController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/andre/dojo/javafx_contact_manager/dashboard-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/andre/dojo/javafx_contact_manager/dashboard-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/andre/dojo/javafx_contact_manager/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/andre/dojo/javafx_contact_manager/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

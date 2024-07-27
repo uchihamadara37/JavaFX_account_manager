@@ -1,6 +1,7 @@
 package com.andre.dojo.javafx_contact_manager;
 
 import com.andre.dojo.Models.Account;
+import com.andre.dojo.Models.HistoryPassword;
 import com.andre.dojo.Utils.ObjectSaver;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -85,7 +86,9 @@ public class SignupController implements Initializable {
                                     })
                                     .orElse(false);
                             HelloApplication.getListData().clear();
-                            HelloApplication.addListData(new Account(null, generateId(), acName, acUrl2, uname, pass));
+                            Account ac = new Account(null, generateId(), acName, acUrl2, uname, pass);
+                            ac.addHistoryPassword(new HistoryPassword(ac.getId().get(), ChangeController.getTimeNow(), "", pass));
+                            HelloApplication.addListData(ac);
                             HelloApplication.max_id = 1;
 //                        }else{
 //                            System.out.println("punya owner");

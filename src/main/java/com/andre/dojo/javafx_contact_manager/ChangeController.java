@@ -100,12 +100,15 @@ public class ChangeController implements Initializable {
         });
 
         btnDelete.setOnAction(e -> {
-            HelloApplication.getListData().removeIf(ac -> ac.getOwner() != null && idSelected == ac.getId().get());
-            if (HelloApplication.getListData().stream()
-                    .filter(ac -> ac.getOwner() == null)
-                    .findFirst()
-                    .orElse(null) != null){
-                HelloController.showAlert("Maaf anda tidak bisa menghapus data user App");
+            if (checkFieldIsAppropriate()){
+                if (showConfirmDialog("Do you really want to delete this one?")){
+                    boolean hasil = HelloApplication.getListData().removeIf(ac -> ac.getOwner() != null && Objects.equals(idSelected, ac.getId().get()));
+                    if (hasil) showPersonDetails(null);
+                    System.out.println(hasil);
+                }
+                if(!Objects.equals(ObjectSaver.filenameAddress, "")){
+                    ObjectSaver.SaveAccount(HelloApplication.getListData());
+                }
             }
         });
 
@@ -140,13 +143,26 @@ public class ChangeController implements Initializable {
         });
     }
 
+    private boolean showConfirmDialog(String message) {
+        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
+        confirm.setTitle("Confirmation");
+        confirm.setHeaderText(message);
+//        confirm.setContentText(message);
+
+        ButtonType result = confirm.showAndWait().orElse(ButtonType.CANCEL);
+
+        //            System.out.println("User chose OK");
+        //            System.out.println("User chose Cancel or closed the dialog");
+        return result == ButtonType.OK;
+    }
+
     private void updateSelectedData() {
         String acName = accountName.getText();
         String acURL = acUrl.getText();
         String acUsername = username.getText();
         String acPass = password.getText();
         for (Account ac : HelloApplication.getListData()){
-            if (Objects.equals(ac.getId().get(), idSelected)){
+            if (Objects.equals(ac.getId().get(), idSelected) && showConfirmDialog("Are you sure want to update this one?")){
                 ac.addHistoryPassword(new HistoryPassword(
                         ac.getId().get(),
                         getTimeNow(),
@@ -159,12 +175,15 @@ public class ChangeController implements Initializable {
                 pesan.setText("data berhasil diupdate!");
 //                reloadContentOfTable();
                 showPersonDetails(null);
+                if(!Objects.equals(ObjectSaver.filenameAddress, "")){
+                    ObjectSaver.SaveAccount(HelloApplication.getListData());
+                }
                 break;
             }
         }
     }
 
-    private String getTimeNow() {
+    public static String getTimeNow() {
         Date now = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy HH:mm:ss");
         return formatter.format(now);
@@ -183,7 +202,10 @@ public class ChangeController implements Initializable {
         String acUsername = username.getText();
         String acPass = password.getText();
         pesan.setText("berhasil menginput data!");
-        HelloApplication.addListData(new Account(HelloApplication.getUserNow(), SignupController.generateId(), acName, acURL, acUsername, acPass));
+        Account ac = new Account(HelloApplication.getUserNow(), SignupController.generateId(), acName, acURL, acUsername, acPass);
+        ac.addHistoryPassword(new HistoryPassword(ac.getId().get(), getTimeNow(), "", acPass));
+        HelloApplication.addListData(ac);
+
         reloadContentOfTable(HelloApplication.getListData());
         if(!Objects.equals(ObjectSaver.filenameAddress, "")){
             ObjectSaver.SaveAccount(HelloApplication.getListData());

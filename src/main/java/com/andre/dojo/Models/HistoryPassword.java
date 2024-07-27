@@ -22,7 +22,7 @@ public class HistoryPassword implements Serializable {
 
     @Override
     public String toString(){
-        return id_acoount.get()+"<>"+waktuUpdate.get()+"<>"+passwordSebelumnya+"<>"+passwordBaru;
+        return id_acoount.get()+"<>"+waktuUpdate.get()+"<>"+passwordSebelumnya.get()+"<>"+passwordBaru.get();
     }
     public static HistoryPassword fromString(String historyString){
         String[] parts = historyString.split("<>");
