@@ -40,7 +40,6 @@ public class HelloApplication extends Application {
         }else{
             System.out.println("Belum ada file tersimpan");
         }
-
         initPrimaryStage();
     }
 

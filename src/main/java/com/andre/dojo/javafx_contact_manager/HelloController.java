@@ -45,7 +45,8 @@ public class HelloController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         username.setText("");
         password.setText("");
-        pesan.setText(ObjectSaver.filenameAddress);
+//        pesan.setText(ObjectSaver.filenameAddress);
+        pesan.setText("");
 
         anchorPaneRootStatic = anchorPaneRoot;
         anchorPaneStatic = anchorPane;
@@ -60,13 +61,15 @@ public class HelloController implements Initializable {
             pesan.setText("You can load your recent data from file.txt");
         });
         btnImportFile.setOnMouseExited(e -> {
-            pesan.setText(ObjectSaver.filenameAddress);
+//            pesan.setText(ObjectSaver.filenameAddress);
+            pesan.setText("");
         });
         btnSignup.setOnMouseEntered(e -> {
             pesan.setText("if you don't have first account then please do registration!");
         });
         btnSignup.setOnMouseExited(e -> {
-            pesan.setText(ObjectSaver.filenameAddress);
+//            pesan.setText(ObjectSaver.filenameAddress);
+            pesan.setText("");
         });
         btnSignup.setOnAction(event -> {
             signupAction();

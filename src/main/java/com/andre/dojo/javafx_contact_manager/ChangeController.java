@@ -2,6 +2,7 @@ package com.andre.dojo.javafx_contact_manager;
 
 import com.andre.dojo.Models.Account;
 import com.andre.dojo.Models.HistoryPassword;
+import com.andre.dojo.Utils.ObjectSaver;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -117,19 +118,20 @@ public class ChangeController implements Initializable {
                 if (ac.getAccountName().get().toLowerCase().contains(input)){
                     listBaru.add(ac);
                     ketemu = true;
-                    break;
+                    continue;
                 }
                 if (ac.getUrl().get().toLowerCase().contains(input)){
                     listBaru.add(ac);
                     ketemu = true;
-                    break;
+                    continue;
                 }
                 if (ac.getUsername().get().toLowerCase().contains(input)){
                     listBaru.add(ac);
                     ketemu = true;
-                    break;
+                    continue;
                 }
             }
+            System.out.println(listBaru.size());
             if (!input.isEmpty()){
                 reloadContentOfTable(listBaru);
             }else{
@@ -183,6 +185,9 @@ public class ChangeController implements Initializable {
         pesan.setText("berhasil menginput data!");
         HelloApplication.addListData(new Account(HelloApplication.getUserNow(), SignupController.generateId(), acName, acURL, acUsername, acPass));
         reloadContentOfTable(HelloApplication.getListData());
+        if(!Objects.equals(ObjectSaver.filenameAddress, "")){
+            ObjectSaver.SaveAccount(HelloApplication.getListData());
+        }
         showPersonDetails(null);
         tableView2.setVisible(false);
         HelloController.showAlert("Berhasil menginput data!");
